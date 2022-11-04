@@ -11,7 +11,7 @@ jobs:
       - name: Download a Bluid Artifact
         uses: actions/download-artifact@v3.0.1
         with:
-        # Artifact name
+      # Artifact name
           name: programa
       - uses: actions/checkout@v3.1.0
 
@@ -38,3 +38,5 @@ jobs:
             export DBNAME=${{ secrets.DBNAME }}
             export DBPORT=${{ secrets.DBPORT }}
             export PORT=8000
+            chmod +x main
+            nohup ./main > nohup.out 2> nohup.err < /dev/null &
