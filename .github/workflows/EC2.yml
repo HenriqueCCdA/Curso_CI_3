@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download a Bluid Artifact
-        uses: actions/download-artifact@v3.0.1
+        uses: actions/download-artifact@v3.0.0
         with:
-        # Artifact name
+      # Artifact name
           name: programa
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v3.0
 
       - name: ssh deploy
         uses: easingthemes/ssh-deploy@main
@@ -38,3 +38,5 @@ jobs:
             export DBNAME=${{ secrets.DBNAME }}
             export DBPORT=${{ secrets.DBPORT }}
             export PORT=8000
+            chmod +x main
+            nohup ./main > nohup.out 2> nohup.err < /dev/null &
